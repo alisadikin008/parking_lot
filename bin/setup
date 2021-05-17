@@ -1,0 +1,5 @@
+#!/bin/bash
+echo 'Installing dependencies'
+npm install
+echo 'Finishing setup...'
+echo 'Setup complete.'
