@@ -35,7 +35,22 @@ describe('Leave a vehicle.', () => {
         expect(removeVehicle('KA-01-HH-1234')).toEqual(expect.arrayContaining([1]))
     })
 
-    test('Should leave the vehicle at position 1 and return updated free slots.', () => {
+    test('Should leave the vehicle at position 4 and return updated free slots.', () => {
         expect(removeVehicle('KA-01-HH-7777', 5)).toEqual(expect.arrayContaining([1, 4]))
     })
+})
+
+describe('Park a vehicle after parking lot have slots free.', () => {
+    test('Should park the vehicle returning allotted parking slot.', () => {
+        expect(addVehicle('NL-02-HH-4122')).toEqual(1)
+    })
+
+    test('Should park the vehicle returning allotted parking slot.', () => {
+        expect(addVehicle('AS-05-RT-8767')).toEqual(4)
+    })
+
+    test('Should refuse to park as parking lot is full.', () => {
+        expect(addVehicle('ML-09-CD-9981')).toEqual(undefined)
+    })
+
 })
