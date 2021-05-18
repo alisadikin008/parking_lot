@@ -12,6 +12,7 @@ export const calculateParkingCharges = (vehicleNumber: string, hoursParked: numb
         return (hoursParked * 10) - 10
     }
 }
+
 export const createParkingLot = (size: number) => {
     console.log(`Created parking lot with ${size} slots`)
     for(let i = 1;i < size + 1; i++){
