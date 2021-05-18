@@ -36,6 +36,6 @@ describe('Leave a vehicle.', () => {
     })
 
     test('Should leave the vehicle at position 1 and return updated free slots.', () => {
-        expect(removeVehicle('KA-01-HH-7777')).toEqual(expect.arrayContaining([1, 4]))
+        expect(removeVehicle('KA-01-HH-7777', 5)).toEqual(expect.arrayContaining([1, 4]))
     })
 })
