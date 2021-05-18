@@ -1,4 +1,4 @@
-import { createParkingLot, addVehicle, removeVehicle } from './data'
+import { createParkingLot, addVehicle, removeVehicle, printParkingLot } from './data'
 
 describe('Create parking lot.', () => {
     test('Should return an array representing queue in parking lot', () => {
@@ -52,5 +52,19 @@ describe('Park a vehicle after parking lot have slots free.', () => {
     test('Should refuse to park as parking lot is full.', () => {
         expect(addVehicle('ML-09-CD-9981')).toEqual(undefined)
     })
+})
 
+describe('Show parking lot status.', () => {
+    const occupiedSlots = new Map([
+        ['NL-02-HH-4122', 1],
+        ['KA-01-HH-9999', 2],
+        ['KA-01-BB-0001', 3],
+        ['AS-05-RT-8767', 4],
+        ['KA-01-HH-2701', 5],
+        ['KA-01-HH-3141', 6]
+    ])
+    test('Should match with status of both occupied and empty slots.', () => {
+        expect(printParkingLot().freeSlots).toEqual(expect.arrayContaining([]))
+        expect(printParkingLot().occupiedSlots).toEqual(occupiedSlots)
+    })
 })

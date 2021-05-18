@@ -46,3 +46,13 @@ export const removeVehicle = (vehicleNumber: string, hours: number) => {
     console.log(`Registration number ${vehicleNumber} with Slot Number ${parkingSpot} is free with Charge ${charges}`)
     return freeSlots
 }
+
+export const printParkingLot = () => {
+    const sortedMap = new Map([...occupiedSlots.entries()].sort((a, b) => a[1] - b[1]))
+    console.log(`Slot No.    Registration No.`)
+    sortedMap.forEach((key, value) => {
+        console.log(`${key}           ${value}`)
+    })
+    
+    return {occupiedSlots, freeSlots}
+}
