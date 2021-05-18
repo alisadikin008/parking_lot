@@ -5,7 +5,7 @@ const getNearestVacantSlot = () => {
     return freeSlots[0]
 }
 
-export const calculateParkingCharge = (vehicleNumber: string, hoursParked: number) => {
+export const calculateParkingCharges = (vehicleNumber: string, hoursParked: number) => {
     if(typeof hoursParked == "undefined" || hoursParked <= 2){
         return 10
     }else{
@@ -40,7 +40,7 @@ export const removeVehicle = (vehicleNumber: string, hours: number) => {
     }
 
     const parkingSpot = occupiedSlots.get(vehicleNumber)
-    const charges = calculateParkingCharge(vehicleNumber, hours)
+    const charges = calculateParkingCharges(vehicleNumber, hours)
     freeSlots.push(Number(parkingSpot))
     occupiedSlots.delete(vehicleNumber)
     console.log(`Registration number ${vehicleNumber} with Slot Number ${parkingSpot} is free with Charge ${charges}`)

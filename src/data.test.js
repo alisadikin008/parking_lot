@@ -1,4 +1,9 @@
-import { createParkingLot, addVehicle, removeVehicle, printParkingLot } from './data'
+import { 
+    createParkingLot,
+    addVehicle,
+    removeVehicle,
+    printParkingLot,
+    calculateParkingCharges } from './data'
 
 describe('Create parking lot.', () => {
     test('Should return an array representing queue in parking lot', () => {
@@ -66,5 +71,20 @@ describe('Show parking lot status.', () => {
     test('Should match with status of both occupied and empty slots.', () => {
         expect(printParkingLot().freeSlots).toEqual(expect.arrayContaining([]))
         expect(printParkingLot().occupiedSlots).toEqual(occupiedSlots)
+    })
+})
+
+describe('Calculate parking charges.', () => {
+    test('Should return charges $30 for 4 hours.', () => {
+        expect(calculateParkingCharges('NL-02-HH-4122', 4)).toBe(30)
+    })
+    test('Should return charges $10 for 2 hours.', () => {
+        expect(calculateParkingCharges('NL-02-HH-4122', 2)).toBe(10)
+    })
+    test('Should return charges $10 for 0.5 hours.', () => {
+        expect(calculateParkingCharges('NL-02-HH-4122', 0.5)).toBe(10)
+    })
+    test('Should return charges $3990 for 400 hours.', () => {
+        expect(calculateParkingCharges('NL-02-HH-4122', 400)).toBe(3990)
     })
 })
