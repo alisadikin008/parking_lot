@@ -25,3 +25,17 @@ export const addVehicle = (vehicleNumber: string) => {
     console.log(`Allocated slot number: ${occupiedSlots.get(vehicleNumber)}`)
     return occupiedSlots.get(vehicleNumber)
 }
+
+export const removeVehicle = (vehicleNumber: string, hours: number) => {
+    if(!occupiedSlots.get(vehicleNumber)){
+        console.log(`Registration number ${vehicleNumber} not found`)
+        return
+    }
+
+    const parkingSpot = occupiedSlots.get(vehicleNumber)
+    const charges = 10
+    freeSlots.push(Number(parkingSpot))
+    occupiedSlots.delete(vehicleNumber)
+    console.log(`Registration number ${vehicleNumber} with Slot Number ${parkingSpot} is free with Charge ${charges}`)
+    return freeSlots
+}

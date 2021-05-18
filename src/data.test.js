@@ -1,4 +1,4 @@
-import { createParkingLot, addVehicle } from './data'
+import { createParkingLot, addVehicle, removeVehicle } from './data'
 
 describe('Create parking lot.', () => {
     test('Should return an array representing queue in parking lot', () => {
@@ -27,5 +27,15 @@ describe('Park a vehicle.', () => {
     })
     test('Should refuse to park as parking lot if full.', () => {
         expect(addVehicle('MH-02-HH-5577')).toEqual(undefined)
+    })
+})
+
+describe('Leave a vehicle.', () => {
+    test('Should leave the vehicle at position 1 and return updated free slots.', () => {
+        expect(removeVehicle('KA-01-HH-1234')).toEqual(expect.arrayContaining([1]))
+    })
+
+    test('Should leave the vehicle at position 1 and return updated free slots.', () => {
+        expect(removeVehicle('KA-01-HH-7777')).toEqual(expect.arrayContaining([1, 4]))
     })
 })
